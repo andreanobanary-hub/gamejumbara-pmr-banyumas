@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stan PMR Jumbara XXXII - SMPN 2 Pekuncen</title>
+  <title>Stan Laskar Nagasasi Jumbara XXXII - SMPN 2 Pekuncen</title>
   <!-- Tailwind CSS & FontAwesome -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -62,12 +62,18 @@
   <!-- ==================== AREA UTAMA ==================== -->
   <main class="max-w-4xl mx-auto px-4 py-6 flex-1 w-full">
 
-    <!-- BAR NAVIGASI ATAS & TOMBOL PREVIEW RIWAYAT -->
-    <div class="flex justify-between items-center mb-5">
-      <button onclick="goToHome()" class="px-4 py-2 bg-white text-red-700 hover:bg-red-50 border border-red-200 rounded-xl text-xs font-bold shadow-sm transition flex items-center gap-2">
-        <i class="fa-solid fa-house"></i>
-        <span>Menu Awal (Buku Tamu)</span>
-      </button>
+    <!-- BAR NAVIGASI ATAS -->
+    <div class="flex flex-wrap justify-between items-center gap-2 mb-5">
+      <div class="flex items-center gap-2">
+        <button onclick="goToHome()" class="px-4 py-2 bg-white text-red-700 hover:bg-red-50 border border-red-200 rounded-xl text-xs font-bold shadow-sm transition flex items-center gap-2">
+          <i class="fa-solid fa-house"></i>
+          <span>Menu Awal</span>
+        </button>
+        <button onclick="resetSesiTamu()" class="px-3.5 py-2 bg-rose-100 hover:bg-rose-200 text-rose-800 border border-rose-300 rounded-xl text-xs font-bold shadow-sm transition flex items-center gap-1.5" title="Reset sesi tamu saat ini">
+          <i class="fa-solid fa-arrow-rotate-left"></i>
+          <span>Reset Sesi</span>
+        </button>
+      </div>
 
       <button onclick="openHistoryModal()" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-bold shadow-sm transition flex items-center gap-2">
         <i class="fa-solid fa-clipboard-check"></i>
@@ -75,14 +81,14 @@
       </button>
     </div>
 
-    <!-- 1. BUKU TAMU DIGITAL (MENU PENDAFTARAN) -->
+    <!-- 1. BUKU TAMU DIGITAL (MENU AWAL) -->
     <section id="section-register" class="bg-white rounded-3xl shadow-xl p-6 sm:p-8 border border-slate-200">
       <div class="text-center mb-6">
         <span class="inline-block p-3.5 bg-red-50 text-red-600 rounded-2xl mb-2 text-2xl">
           <i class="fa-solid fa-handshake-angle"></i>
         </span>
         <h2 class="text-2xl font-bold text-slate-800">Buku Tamu & Arena Game PMR</h2>
-        <p class="text-sm text-slate-500 mt-1">Lengkapi data kunjungan Anda untuk bermain game, kumpulkan skor, dan bawa pulang hadiah!</p>
+        <p class="text-sm text-slate-500 mt-1">Lengkapi data kunjungan Anda untuk mulai bermain, kumpulkan skor, dan bawa pulang souvenir!</p>
       </div>
 
       <form id="formTamu" onsubmit="handleStart(event)" class="space-y-4 max-w-md mx-auto">
@@ -132,8 +138,8 @@
           <p id="displayGuestMeta" class="text-xs text-red-200">Kontingen</p>
         </div>
         <div class="flex gap-2">
-          <button onclick="goToHome()" class="text-xs bg-white/20 hover:bg-white/30 px-3.5 py-2 rounded-xl border border-white/30 transition flex items-center gap-1.5">
-            <i class="fa-solid fa-user-plus"></i> Ganti Tamu
+          <button onclick="resetSesiTamu()" class="text-xs bg-white/20 hover:bg-white/30 px-3.5 py-2 rounded-xl border border-white/30 transition flex items-center gap-1.5">
+            <i class="fa-solid fa-user-xmark"></i> Reset / Ganti Tamu
           </button>
         </div>
       </div>
@@ -261,15 +267,15 @@
         <span>Kirim & Rekam ke Google Sheets</span>
       </button>
 
-      <!-- TOMBOL KEMBALI & GANTI TAMU -->
+      <!-- TOMBOL KEMBALI & RESET TAMU -->
       <div class="grid grid-cols-2 gap-2 mt-3">
         <button onclick="backToMenu()" class="py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition flex items-center justify-center gap-1.5">
           <i class="fa-solid fa-gamepad"></i>
           <span>Main Game Lain</span>
         </button>
-        <button onclick="goToHome()" class="py-2.5 bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-bold rounded-xl transition flex items-center justify-center gap-1.5 border border-rose-200">
+        <button onclick="resetSesiTamu()" class="py-2.5 bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-bold rounded-xl transition flex items-center justify-center gap-1.5 border border-rose-200">
           <i class="fa-solid fa-arrow-rotate-left"></i>
-          <span>Selesai & Tamu Baru</span>
+          <span>Reset & Tamu Baru</span>
         </button>
       </div>
     </section>
@@ -304,8 +310,12 @@
           <p id="emptyHistoryNotice" class="text-center text-xs text-slate-400 py-8 hidden">Belum ada pengunjung yang tercatat pada sesi ini.</p>
         </div>
 
-        <div class="pt-3 border-t flex justify-between items-center text-xs text-slate-500">
-          <span>*Data otomatis terhubung & tersimpan ke Google Sheets</span>
+        <div class="pt-3 border-t flex flex-wrap justify-between items-center gap-2 text-xs text-slate-500">
+          <button onclick="clearHistoryStorage()" class="px-3 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 rounded-lg font-semibold transition flex items-center gap-1.5">
+            <i class="fa-solid fa-trash-can"></i>
+            <span>Reset Riwayat Preview</span>
+          </button>
+          
           <button onclick="closeHistoryModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl transition">
             Tutup
           </button>
@@ -523,9 +533,16 @@
       showSection('section-menu');
     }
 
+    // RESET SESI TAMU SAAT INI
+    function resetSesiTamu() {
+      if (confirm("Reset sesi tamu saat ini dan kembali ke pendaftaran buku tamu?")) {
+        document.getElementById('formTamu').reset();
+        currentGuest = { nama: '', asal: '', tingkat: 'Madya', game: '', skor: '', pesan: '' };
+        showSection('section-register');
+      }
+    }
+
     function goToHome() {
-      document.getElementById('formTamu').reset();
-      currentGuest = { nama: '', asal: '', tingkat: 'Madya', game: '', skor: '', pesan: '' };
       showSection('section-register');
     }
 
@@ -773,7 +790,7 @@
       }
     }
 
-    // --- PREVIEW RIWAYAT MODAL ---
+    // --- PREVIEW RIWAYAT MODAL & RESET DATA ---
     function updateBadgeCount() {
       const history = JSON.parse(localStorage.getItem('pmr_spenda_history') || '[]');
       document.getElementById('historyBadgeCount').innerText = history.length;
@@ -809,6 +826,14 @@
 
     function closeHistoryModal() {
       document.getElementById('modalHistory').classList.add('hidden');
+    }
+
+    function clearHistoryStorage() {
+      if (confirm("Hapus seluruh catatan riwayat preview di perangkat ini? (Data di Google Sheets tetap aman)")) {
+        localStorage.removeItem('pmr_spenda_history');
+        updateBadgeCount();
+        openHistoryModal();
+      }
     }
 
     window.addEventListener('DOMContentLoaded', updateBadgeCount);
