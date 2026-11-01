@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stan PMR Jumbara XXXII - SMPN 2 Pekuncen</title>
+  <!-- Tailwind CSS & FontAwesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+    body { font-family: 'Poppins', sans-serif; }
+    .bg-batik-pattern {
+      background-color: #f8fafc;
+      background-image: radial-gradient(#dc2626 0.75px, transparent 0.75px), radial-gradient(#b91c1c 0.75px, #f8fafc 0.75px);
+      background-size: 30px 30px;
+      background-position: 0 0, 15px 15px;
+    }
+  </style>
+</head>
+<body class="bg-batik-pattern min-h-screen text-slate-800 flex flex-col justify-between">
+
+  <!-- ==================== HEADER RESMI STAN ==================== -->
+  <header class="bg-gradient-to-r from-red-800 via-red-600 to-rose-700 text-white shadow-xl border-b-4 border-amber-400">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      
+      <!-- Logo Kabupaten Banyumas -->
+      <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-2xl border border-white/20">
+        <img src="kabupaten banyumas.png" alt="Logo Kab Banyumas" class="w-14 h-14 object-contain filter drop-shadow" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Lambang_Kabupaten_Banyumas.png/240px-Lambang_Kabupaten_Banyumas.png'">
+        <div class="text-left">
+          <p class="text-xs uppercase tracking-wider text-amber-200 font-semibold">Kabupaten</p>
+          <p class="text-sm font-bold leading-tight">Banyumas</p>
+          <span class="text-[10px] text-red-100">Rarasing Rasa Wiwaraning Praja</span>
+        </div>
+      </div>
+
+      <!-- Identitas Stan Kegiatan -->
+      <div class="text-center">
+        <span class="bg-amber-400 text-red-950 text-xs font-black uppercase px-3 py-1 rounded-full shadow-sm tracking-wider">
+          JUMBARA PMR XXXII BANYUMAS
+        </span>
+        <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight mt-1 text-white drop-shadow">
+          STAN PMR MADYA
+        </h1>
+        <p class="text-xs sm:text-sm text-red-100 font-medium">SMP NEGERI 2 PEKUNCEN</p>
+      </div>
+
+      <!-- Logo SMP Negeri 2 Pekuncen -->
+      <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-2xl border border-white/20">
+        <div class="text-right">
+          <p class="text-xs uppercase tracking-wider text-amber-200 font-semibold">PMR Madya</p>
+          <p class="text-sm font-bold leading-tight">SMPN 2 Pekuncen</p>
+          <span class="text-[10px] text-red-100">Nggayuh Ambukaning Dwara Kartika</span>
+        </div>
+        <img src="Ng gayuh Ambukaning Dwara Kartika (6) (1).png" alt="Logo SMPN 2 Pekuncen" class="w-14 h-14 object-contain filter drop-shadow" onerror="this.src='https://img.icons8.com/color/96/school.png'">
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ==================== AREA UTAMA ==================== -->
+  <main class="max-w-4xl mx-auto px-4 py-8 flex-1 w-full">
+
+    <!-- 1. BUKU TAMU DIGITAL -->
+    <section id="section-register" class="bg-white rounded-3xl shadow-xl p-6 sm:p-8 border border-slate-200">
+      <div class="text-center mb-6">
+        <span class="inline-block p-3 bg-red-50 text-red-600 rounded-2xl mb-2 text-2xl">
+          <i class="fa-solid fa-handshake-angle"></i>
+        </span>
+        <h2 class="text-2xl font-bold text-slate-800">Buku Tamu & Arena Game PMR</h2>
+        <p class="text-sm text-slate-500 mt-1">Silakan lengkapi data kunjungan Anda untuk mulai bermain dan mengumpulkan skor hadiah!</p>
+      </div>
+
+      <form id="formTamu" onsubmit="handleStart(event)" class="space-y-4 max-w-md mx-auto">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Nama Lengkap</label>
+          <div class="relative">
+            <i class="fa-solid fa-user absolute left-3.5 top-3.5 text-slate-400"></i>
+            <input type="text" id="inputNama" required placeholder="Contoh: Budi Santoso" class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-red-500 focus:outline-none font-medium text-sm">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Asal Pangkalan / Unit / Sekolah</label>
+          <div class="relative">
+            <i class="fa-solid fa-school absolute left-3.5 top-3.5 text-slate-400"></i>
+            <input type="text" id="inputAsal" required placeholder="Contoh: Kontingen SMP N 1 Wangon" class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-red-500 focus:outline-none font-medium text-sm">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Tingkatan Tamu</label>
+          <div class="relative">
+            <i class="fa-solid fa-award absolute left-3.5 top-3.5 text-slate-400"></i>
+            <select id="selectTingkat" class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-red-500 focus:outline-none font-medium text-sm bg-white">
+              <option value="Madya">PMR Madya (SMP/MTs)</option>
+              <option value="Wira">PMR Wira (SMA/SMK/MA)</option>
+              <option value="Mula">PMR Mula (SD/MI)</option>
+              <option value="Pembina">Pembina / Fasilitator / Guru</option>
+              <option value="Umum">Tamu Undangan / Umum</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white rounded-2xl font-bold shadow-lg shadow-red-500/30 transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+          <span>Masuk ke Arena Game</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </form>
+    </section>
+
+    <!-- 2. PILIHAN GAME -->
+    <section id="section-menu" class="hidden space-y-6">
+      <div class="bg-gradient-to-r from-red-700 to-rose-800 text-white p-5 rounded-3xl shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <p class="text-xs uppercase tracking-wider text-amber-300 font-semibold">Selamat Datang di Tenda Kami</p>
+          <h3 id="displayGuestName" class="text-xl font-bold">Sahabat Relawan</h3>
+          <p id="displayGuestMeta" class="text-xs text-red-200">Kontingen</p>
+        </div>
+        <button onclick="logoutGuest()" class="text-xs bg-white/20 hover:bg-white/30 px-3 py-1.5 rounded-xl border border-white/30 transition flex items-center gap-1.5">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> Ganti Tamu
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <!-- Game 1 -->
+        <div onclick="openGame('kuis')" class="cursor-pointer bg-white p-6 rounded-3xl border-2 border-transparent hover:border-red-500 shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 flex flex-col items-center text-center group">
+          <div class="w-16 h-16 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition">
+            <i class="fa-solid fa-brain"></i>
+          </div>
+          <h4 class="font-bold text-lg text-slate-800">Kuis Cepat Tanggap</h4>
+          <p class="text-xs text-slate-500 mt-2 flex-1">7 soal materi kepalangmerahan, P3K, donor darah, dan sejarah kemanusiaan.</p>
+          <span class="mt-4 px-4 py-1.5 bg-red-50 text-red-700 font-bold text-xs rounded-full group-hover:bg-red-600 group-hover:text-white transition">Mulai Kuis</span>
+        </div>
+
+        <!-- Game 2 -->
+        <div onclick="openGame('spin')" class="cursor-pointer bg-white p-6 rounded-3xl border-2 border-transparent hover:border-amber-500 shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 flex flex-col items-center text-center group">
+          <div class="w-16 h-16 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition">
+            <i class="fa-solid fa-dharmachakra"></i>
+          </div>
+          <h4 class="font-bold text-lg text-slate-800">Roda Keberuntungan</h4>
+          <p class="text-xs text-slate-500 mt-2 flex-1">Putar roda untuk mendapatkan stiker, merchandise, permen energi, atau tantangan yel-yel seru!</p>
+          <span class="mt-4 px-4 py-1.5 bg-amber-50 text-amber-700 font-bold text-xs rounded-full group-hover:bg-amber-500 group-hover:text-white transition">Putar Roda</span>
+        </div>
+
+        <!-- Game 3 -->
+        <div onclick="openGame('p3k')" class="cursor-pointer bg-white p-6 rounded-3xl border-2 border-transparent hover:border-emerald-500 shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 flex flex-col items-center text-center group">
+          <div class="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition">
+            <i class="fa-solid fa-kit-medical"></i>
+          </div>
+          <h4 class="font-bold text-lg text-slate-800">Tebak Alat P3K</h4>
+          <p class="text-xs text-slate-500 mt-2 flex-1">Cocokkan skenario cedera dengan alat pertolongan pertama yang paling tepat.</p>
+          <span class="mt-4 px-4 py-1.5 bg-emerald-50 text-emerald-700 font-bold text-xs rounded-full group-hover:bg-emerald-600 group-hover:text-white transition">Tebak Alat</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3A. GAME KUIS -->
+    <section id="game-kuis" class="hidden bg-white rounded-3xl shadow-xl p-6 sm:p-8 border border-slate-200">
+      <div class="flex items-center justify-between mb-4 border-b pb-3">
+        <button onclick="backToMenu()" class="text-xs font-bold text-slate-500 hover:text-slate-800 flex items-center gap-1">
+          <i class="fa-solid fa-chevron-left"></i> Menu Utama
+        </button>
+        <span id="quizCounter" class="text-xs font-extrabold px-3 py-1 bg-red-100 text-red-700 rounded-full">Soal 1 / 7</span>
+      </div>
+
+      <div class="my-4">
+        <h3 id="quizQuestion" class="text-lg sm:text-xl font-bold text-slate-800 leading-snug">Pertanyaan Kuis</h3>
+      </div>
+
+      <div id="quizOptions" class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6">
+        <!-- Opsi jawaban kuis -->
+      </div>
+    </section>
+
+    <!-- 3B. GAME RODA SPIN -->
+    <section id="game-spin" class="hidden bg-white rounded-3xl shadow-xl p-6 sm:p-8 border border-slate-200 text-center">
+      <div class="flex items-center justify-between mb-4 border-b pb-3">
+        <button onclick="backToMenu()" class="text-xs font-bold text-slate-500 hover:text-slate-800 flex items-center gap-1">
+          <i class="fa-solid fa-chevron-left"></i> Menu Utama
+        </button>
+        <span class="text-xs font-extrabold px-3 py-1 bg-amber-100 text-amber-700 rounded-full">Spin & Win</span>
+      </div>
+
+      <div class="relative inline-block my-4">
+        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 z-20 text-red-600 text-3xl filter drop-shadow">
+          <i class="fa-solid fa-caret-down"></i>
+        </div>
+        <canvas id="wheelCanvas" width="340" height="340" class="rounded-full shadow-lg border-4 border-amber-300"></canvas>
+      </div>
+
+      <div class="mt-4">
+        <button id="spinBtn" onclick="spinWheel()" class="px-8 py-3 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-extrabold rounded-full shadow-lg shadow-amber-500/30 transition transform active:scale-95 text-sm uppercase tracking-wider">
+          <i class="fa-solid fa-rotate mr-2"></i> Putar Sekarang!
+        </button>
+      </div>
+
+      <div id="spinResultBox" class="mt-6 p-4 rounded-2xl bg-amber-50 border border-amber-200 hidden">
+        <p class="text-xs uppercase tracking-wider text-amber-700 font-bold">Hasil Putaran:</p>
+        <h4 id="spinResultText" class="text-lg font-black text-slate-800 mt-1">Stiker PMR Spenda</h4>
+        <button onclick="finishSpin()" class="mt-3 px-5 py-2 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded-xl shadow transition">
+          Lanjut Simpan Hasil
+        </button>
+      </div>
+    </section>
+
+    <!-- 3C. GAME TEBAK P3K -->
+    <section id="game-p3k" class="hidden bg-white rounded-3xl shadow-xl p-6 sm:p-8 border border-slate-200">
+      <div class="flex items-center justify-between mb-4 border-b pb-3">
+        <button onclick="backToMenu()" class="text-xs font-bold text-slate-500 hover:text-slate-800 flex items-center gap-1">
+          <i class="fa-solid fa-chevron-left"></i> Menu Utama
+        </button>
+        <span id="p3kCounter" class="text-xs font-extrabold px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full">Kasus 1 / 5</span>
+      </div>
+
+      <div class="my-4 text-center">
+        <p class="text-xs uppercase tracking-wider text-emerald-600 font-bold mb-1">Kasus Cedera / Kebutuhan:</p>
+        <h3 id="p3kScenario" class="text-lg font-bold text-slate-800">Kasus...</h3>
+      </div>
+
+      <p class="text-center text-xs text-slate-500 mb-4 font-medium">Pilih alat P3K yang paling tepat digunakan:</p>
+
+      <div id="p3kOptions" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <!-- Opsi alat P3K -->
+      </div>
+    </section>
+
+    <!-- 4. HASIL AKHIR & PESAN KESAN -->
+    <section id="section-result" class="hidden bg-white rounded-3xl shadow-xl p-6 sm:p-8 border border-slate-200 text-center max-w-lg mx-auto">
+      <div class="w-20 h-20 mx-auto rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-4xl mb-4 animate-bounce">
+        <i class="fa-solid fa-trophy"></i>
+      </div>
+      <h3 class="text-2xl font-black text-slate-800">Hebat, Relawan Muda!</h3>
+      <p id="resultGameTitle" class="text-xs font-semibold text-slate-500 uppercase tracking-wider mt-1">Hasil Game</p>
+      
+      <div class="my-5 p-4 rounded-2xl bg-slate-50 border border-slate-200">
+        <p class="text-xs text-slate-500 font-medium">Pencapaian:</p>
+        <p id="resultScore" class="text-3xl font-black text-red-600 my-1">Skor: 100 Poin</p>
+        <p id="resultReward" class="text-xs font-bold text-emerald-600">Berhak Mendapatkan Hadiah</p>
+      </div>
+
+      <div class="text-left mb-4">
+        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Pesan / Kesan untuk Stan PMR Spenda:</label>
+        <textarea id="inputPesan" rows="2" placeholder="Tuliskan pesan, kesan, atau salam persaudaraan..." class="w-full p-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-red-500 focus:outline-none text-xs font-medium"></textarea>
+      </div>
+
+      <button id="btnKirimData" onclick="submitToGoogleSheets()" class="w-full py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl shadow-lg shadow-red-500/30 transition flex items-center justify-center gap-2">
+        <i class="fa-solid fa-cloud-arrow-up"></i>
+        <span>Kirim & Rekam ke Google Sheets</span>
+      </button>
+
+      <button onclick="backToMenu()" class="w-full mt-2 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition">
+        Mainkan Game Lainnya
+      </button>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-slate-900 text-slate-400 py-4 text-center text-xs border-t border-slate-800">
+    <p class="font-medium text-slate-300">Stan PMR Madya SMP Negeri 2 Pekuncen — Jumbara PMR XXXII Kabupaten Banyumas</p>
+    <p class="text-[11px] text-slate-500 mt-0.5">Siamo Tutti Fratelli — Kita Semua Bersaudara</p>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT & GOOGLE APPS SCRIPT INTEGRATION ==================== -->
+  <script>
+    // URL WEB APP GOOGLE APPS SCRIPT MILIK ANDA
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwPy0PJNPPp4zPcl1Lqxm9VisPglD0rPo5jba4QJePuW_XLMNpGDJeDbP_ZpDZ4ZKfXpQ/exec";
+
+    // Audio Synthesizer (Web Audio API)
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function playTone(freq, type = 'sine', duration = 0.15) {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = type;
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function soundCorrect() {
+      playTone(523.25, 'triangle', 0.1);
+      setTimeout(() => playTone(659.25, 'triangle', 0.1), 100);
+      setTimeout(() => playTone(783.99, 'triangle', 0.2), 200);
+    }
+
+    function soundWrong() {
+      playTone(220, 'sawtooth', 0.25);
+    }
+
+    function soundWin() {
+      confetti({ particleCount: 75, spread: 65, origin: { y: 0.6 } });
+      playTone(440, 'triangle', 0.1);
+      setTimeout(() => playTone(554.37, 'triangle', 0.1), 120);
+      setTimeout(() => playTone(659.25, 'triangle', 0.1), 240);
+      setTimeout(() => playTone(880, 'triangle', 0.35), 360);
+    }
+
+    // State Tamu
+    let currentGuest = {
+      nama: '',
+      asal: '',
+      tingkat: 'Madya',
+      game: '',
+      skor: '',
+      pesan: ''
+    };
+
+    // Bank Soal Kuis PMR
+    const kuisData = [
+      {
+        q: "Siapakah bapak pencetus berdirinya Palang Merah Internasional?",
+        options: ["Jean Henry Dunant", "Florence Nightingale", "Louis Pasteur", "Clara Barton"],
+        answer: 0
+      },
+      {
+        q: "Manakah yang BUKAN termasuk 7 Prinsip Dasar Gerakan Palang Merah dan Bulan Sabit Merah?",
+        options: ["Kemanusiaan", "Kesamaan", "Keuntungan Pribadi", "Kemandirian"],
+        answer: 2
+      },
+      {
+        q: "Tindakan pertama yang tepat saat menolong korban mimisan adalah...",
+        options: ["Menengadahkan kepala ke atas", "Menundukkan kepala sedikit dan menjepit cuping hidung", "Menyiram air es ke dahi", "Menyumbat hidung dengan kain kotor"],
+        answer: 1
+      },
+      {
+        q: "Tri Bakti PMR yang kedua berbunyi...",
+        options: ["Meningkatkan keterampilan hidup sehat", "Berkarya dan berbakti di masyarakat", "Mempererat persahabatan nasional dan internasional", "Menjalankan piket sekolah"],
+        answer: 1
+      },
+      {
+        q: "Kain segitiga serbaguna yang digunakan untuk pembalutan dan fiksasi cedera adalah...",
+        options: ["Plester", "Kasa Steril", "Mitela", "Bidai"],
+        answer: 2
+      },
+      {
+        q: "Berapa batas usia minimal untuk menjadi pendonor darah sukarela?",
+        options: ["12 Tahun", "17 Tahun", "21 Tahun", "25 Tahun"],
+        answer: 1
+      },
+      {
+        q: "Semboyan persaudaraan kepalangmerahan sedunia adalah...",
+        options: ["Veni Vidi Vici", "Siamo Tutti Fratelli", "Bhinneka Tunggal Ika", "Tut Wuri Handayani"],
+        answer: 1
+      }
+    ];
+
+    // Bank Kasus Tebak Alat P3K
+    const p3kData = [
+      {
+        case: "Korban mengalami patah tulang pada lengan bawah dan membutuhkan penyangga agar tidak bergeser.",
+        options: ["Bidai / Spalk", "Kasa Gulung", "Pinset", "Gunting Medis"],
+        answer: 0
+      },
+      {
+        case: "Menutup luka sayat terbuka yang masih mengeluarkan darah agar terhindar dari kotoran kuman.",
+        options: ["Plester Cepat", "Kasa Steril & Perban", "Minyak Angin", "Kapas Kering"],
+        answer: 1
+      },
+      {
+        case: "Membersihkan area sekitar luka lecet sebelum dibalut perban.",
+        options: ["Cairan Antiseptik / NaCl", "Bedak Bayi", "Air Sabun Pekat", "Spirtus"],
+        answer: 0
+      },
+      {
+        case: "Mengambil kotoran atau serpihan kecil dari permukaan luka luar secara steril.",
+        options: ["Gunting Kuku", "Pinset Anatomis", "Jarum Jahit", "Pisau Lipat"],
+        answer: 1
+      },
+      {
+        case: "Membalut luka terkilir di pergelangan kaki dengan tekanan elastis merata.",
+        options: ["Elastic Bandage (Perban Elastis)", "Tali Rafia", "Selotip Kertas", "Kain Basah"],
+        answer: 0
+      }
+    ];
+
+    // Sektor Roda Putar Spin Wheel
+    const wheelSegments = [
+      { text: "Stiker PMR Spenda", color: "#ef4444", reward: "Stiker Eksklusif PMR" },
+      { text: "Tantangan Yel-Yel!", color: "#f59e0b", reward: "Tantangan Seru (Yel-Yel)" },
+      { text: "Permen Energi", color: "#10b981", reward: "Permen Energi Relawan" },
+      { text: "Toss Relawan!", color: "#3b82f6", reward: "Toss Semangat Relawan" },
+      { text: "Gantungan Kunci", color: "#8b5cf6", reward: "Gantungan Kunci PMR" },
+      { text: "Peragaan P3K!", color: "#ec4899", reward: "Tantangan Praktik P3K Singkat" }
+    ];
+
+    const canvas = document.getElementById('wheelCanvas');
+    const ctx = canvas.getContext('2d');
+    let startAngle = 0;
+    const arc = Math.PI / (wheelSegments.length / 2);
+    let spinTimeout = null;
+    let spinAngleStart = 10;
+    let spinTime = 0;
+    let spinTimeTotal = 0;
+
+    function drawRouletteWheel() {
+      if (canvas.getContext) {
+        const outsideRadius = 150;
+        const textRadius = 105;
+        const insideRadius = 35;
+
+        ctx.clearRect(0, 0, 340, 340);
+        ctx.strokeStyle = "#ffffff";
+        ctx.lineWidth = 3;
+
+        for (let i = 0; i < wheelSegments.length; i++) {
+          const angle = startAngle + i * arc;
+          ctx.fillStyle = wheelSegments[i].color;
+
+          ctx.beginPath();
+          ctx.arc(170, 170, outsideRadius, angle, angle + arc, false);
+          ctx.arc(170, 170, insideRadius, angle + arc, angle, true);
+          ctx.stroke();
+          ctx.fill();
+
+          ctx.save();
+          ctx.fillStyle = "#ffffff";
+          ctx.font = "bold 11px Poppins, sans-serif";
+          ctx.translate(170 + Math.cos(angle + arc / 2) * textRadius, 170 + Math.sin(angle + arc / 2) * textRadius);
+          ctx.rotate(angle + arc / 2 + Math.PI / 2);
+          const text = wheelSegments[i].text;
+          ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
+          ctx.restore();
+        }
+
+        ctx.fillStyle = "#ffffff";
+        ctx.beginPath();
+        ctx.arc(170, 170, 24, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.strokeStyle = "#e2e8f0";
+        ctx.stroke();
+
+        ctx.fillStyle = "#dc2626";
+        ctx.beginPath();
+        ctx.arc(170, 170, 12, 0, 2 * Math.PI);
+        ctx.fill();
+      }
+    }
+
+    drawRouletteWheel();
+
+    function showSection(id) {
+      ['section-register', 'section-menu', 'game-kuis', 'game-spin', 'game-p3k', 'section-result'].forEach(s => {
+        document.getElementById(s).classList.add('hidden');
+      });
+      document.getElementById(id).classList.remove('hidden');
+    }
+
+    function handleStart(e) {
+      e.preventDefault();
+      currentGuest.nama = document.getElementById('inputNama').value;
+      currentGuest.asal = document.getElementById('inputAsal').value;
+      currentGuest.tingkat = document.getElementById('selectTingkat').value;
+
+      document.getElementById('displayGuestName').innerText = currentGuest.nama;
+      document.getElementById('displayGuestMeta').innerText = `${currentGuest.tingkat} • ${currentGuest.asal}`;
+
+      showSection('section-menu');
+    }
+
+    function logoutGuest() {
+      document.getElementById('formTamu').reset();
+      showSection('section-register');
+    }
+
+    function backToMenu() {
+      showSection('section-menu');
+    }
+
+    function openGame(type) {
+      if (type === 'kuis') {
+        startQuiz();
+      } else if (type === 'spin') {
+        showSection('game-spin');
+        document.getElementById('spinResultBox').classList.add('hidden');
+      } else if (type === 'p3k') {
+        startP3K();
+      }
+    }
+
+    // --- KUIS LOGIC ---
+    let quizIdx = 0;
+    let quizScore = 0;
+
+    function startQuiz() {
+      quizIdx = 0;
+      quizScore = 0;
+      showSection('game-kuis');
+      renderQuizQuestion();
+    }
+
+    function renderQuizQuestion() {
+      const q = kuisData[quizIdx];
+      document.getElementById('quizCounter').innerText = `Soal ${quizIdx + 1} / ${kuisData.length}`;
+      document.getElementById('quizQuestion').innerText = q.q;
+
+      const container = document.getElementById('quizOptions');
+      container.innerHTML = '';
+
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = "w-full text-left p-4 rounded-2xl border border-slate-200 hover:border-red-500 hover:bg-red-50/50 transition font-medium text-sm flex items-center justify-between";
+        btn.innerHTML = `<span><strong class="text-red-600 mr-2">${String.fromCharCode(65 + idx)}.</strong> ${opt}</span>`;
+        btn.onclick = () => answerQuiz(idx, btn);
+        container.appendChild(btn);
+      });
+    }
+
+    function answerQuiz(selectedIdx, btnEl) {
+      const correctIdx = kuisData[quizIdx].answer;
+      const allBtns = document.getElementById('quizOptions').getElementsByTagName('button');
+
+      for (let b of allBtns) b.disabled = true;
+
+      if (selectedIdx === correctIdx) {
+        soundCorrect();
+        btnEl.classList.add('bg-emerald-100', 'border-emerald-500', 'text-emerald-900');
+        quizScore += 100 / kuisData.length;
+      } else {
+        soundWrong();
+        btnEl.classList.add('bg-rose-100', 'border-rose-500', 'text-rose-900');
+        allBtns[correctIdx].classList.add('bg-emerald-100', 'border-emerald-500', 'text-emerald-900');
+      }
+
+      setTimeout(() => {
+        quizIdx++;
+        if (quizIdx < kuisData.length) {
+          renderQuizQuestion();
+        } else {
+          finishGameQuiz();
+        }
+      }, 1200);
+    }
+
+    function finishGameQuiz() {
+      const finalScore = Math.round(quizScore);
+      currentGuest.game = "Kuis Cepat Tanggap";
+      currentGuest.skor = `${finalScore} Poin`;
+      
+      document.getElementById('resultGameTitle').innerText = "Kuis Cepat Tanggap PMR";
+      document.getElementById('resultScore').innerText = `${finalScore} Poin`;
+      document.getElementById('resultReward').innerText = finalScore >= 80 
+        ? "Mendapatkan: Stiker Eksklusif & Snack Relawan!" 
+        : "Mendapatkan: Permen Energi Relawan & Semangat Belajar!";
+
+      soundWin();
+      showSection('section-result');
+    }
+
+    // --- SPIN WHEEL LOGIC ---
+    let selectedWheelItem = "";
+
+    function spinWheel() {
+      document.getElementById('spinBtn').disabled = true;
+      document.getElementById('spinResultBox').classList.add('hidden');
+      spinAngleStart = Math.random() * 10 + 20;
+      spinTime = 0;
+      spinTimeTotal = Math.random() * 2000 + 3000;
+      rotateWheel();
+    }
+
+    function rotateWheel() {
+      spinTime += 30;
+      if (spinTime >= spinTimeTotal) {
+        stopRotateWheel();
+        return;
+      }
+      const spinAngle = spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
+      startAngle += (spinAngle * Math.PI / 180);
+      drawRouletteWheel();
+      playTone(300 + (spinTime % 200), 'sine', 0.04);
+      spinTimeout = setTimeout(rotateWheel, 30);
+    }
+
+    function stopRotateWheel() {
+      clearTimeout(spinTimeout);
+      const degrees = startAngle * 180 / Math.PI + 90;
+      const arcd = arc * 180 / Math.PI;
+      const index = Math.floor((360 - degrees % 360) / arcd);
+      const result = wheelSegments[index];
+      selectedWheelItem = result.reward;
+
+      document.getElementById('spinResultText').innerText = result.text;
+      document.getElementById('spinResultBox').classList.remove('hidden');
+      document.getElementById('spinBtn').disabled = false;
+      soundWin();
+    }
+
+    function easeOut(t, b, c, d) {
+      const ts = (t /= d) * t;
+      const tc = ts * t;
+      return b + c * (tc + -3 * ts + 3 * t);
+    }
+
+    function finishSpin() {
+      currentGuest.game = "Roda Keberuntungan (Spin Wheel)";
+      currentGuest.skor = selectedWheelItem;
+
+      document.getElementById('resultGameTitle').innerText = "Roda Keberuntungan";
+      document.getElementById('resultScore').innerText = selectedWheelItem;
+      document.getElementById('resultReward').innerText = "Tunjukkan layar ini kepada petugas stan untuk klaim hadiah/tantangan!";
+
+      showSection('section-result');
+    }
+
+    // --- TEBAK P3K LOGIC ---
+    let p3kIdx = 0;
+    let p3kScore = 0;
+
+    function startP3K() {
+      p3kIdx = 0;
+      p3kScore = 0;
+      showSection('game-p3k');
+      renderP3KQuestion();
+    }
+
+    function renderP3KQuestion() {
+      const item = p3kData[p3kIdx];
+      document.getElementById('p3kCounter').innerText = `Kasus ${p3kIdx + 1} / ${p3kData.length}`;
+      document.getElementById('p3kScenario').innerText = item.case;
+
+      const container = document.getElementById('p3kOptions');
+      container.innerHTML = '';
+
+      item.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = "w-full text-left p-4 rounded-2xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/50 transition font-medium text-sm flex items-center gap-3";
+        btn.innerHTML = `<span class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-briefcase-medical"></i></span> <span>${opt}</span>`;
+        btn.onclick = () => answerP3K(idx, btn);
+        container.appendChild(btn);
+      });
+    }
+
+    function answerP3K(selectedIdx, btnEl) {
+      const correctIdx = p3kData[p3kIdx].answer;
+      const allBtns = document.getElementById('p3kOptions').getElementsByTagName('button');
+
+      for (let b of allBtns) b.disabled = true;
+
+      if (selectedIdx === correctIdx) {
+        soundCorrect();
+        btnEl.classList.add('bg-emerald-100', 'border-emerald-500', 'text-emerald-900');
+        p3kScore += 100 / p3kData.length;
+      } else {
+        soundWrong();
+        btnEl.classList.add('bg-rose-100', 'border-rose-500', 'text-rose-900');
+        allBtns[correctIdx].classList.add('bg-emerald-100', 'border-emerald-500', 'text-emerald-900');
+      }
+
+      setTimeout(() => {
+        p3kIdx++;
+        if (p3kIdx < p3kData.length) {
+          renderP3KQuestion();
+        } else {
+          finishP3K();
+        }
+      }, 1200);
+    }
+
+    function finishP3K() {
+      const finalScore = Math.round(p3kScore);
+      currentGuest.game = "Tebak Alat P3K";
+      currentGuest.skor = `${finalScore} Poin`;
+
+      document.getElementById('resultGameTitle').innerText = "Tebak Alat Pertolongan Pertama";
+      document.getElementById('resultScore').innerText = `${finalScore} Poin`;
+      document.getElementById('resultReward').innerText = finalScore >= 80 
+        ? "Mendapatkan: Stiker Eksklusif & Snack Relawan!" 
+        : "Mendapatkan: Permen Energi Relawan & Semangat Belajar P3K!";
+
+      soundWin();
+      showSection('section-result');
+    }
+
+    // --- PENGIRIMAN DATA KE GOOGLE SHEETS ---
+    async function submitToGoogleSheets() {
+      const btn = document.getElementById('btnKirimData');
+      currentGuest.pesan = document.getElementById('inputPesan').value.trim() || "Terima kasih atas kunjungannya!";
+
+      btn.disabled = true;
+      btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-2"></i> Merekam ke Database...`;
+
+      // Simpan cadangan offline di LocalStorage perangkat
+      const localHistory = JSON.parse(localStorage.getItem('pmr_spenda_history') || '[]');
+      localHistory.push({ ...currentGuest, timestamp: new Date().toISOString() });
+      localStorage.setItem('pmr_spenda_history', JSON.stringify(localHistory));
+
+      try {
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(currentGuest)
+        });
+
+        btn.className = "w-full py-3 bg-emerald-600 text-white font-bold rounded-xl shadow transition";
+        btn.innerHTML = `<i class="fa-solid fa-circle-check mr-2"></i> Berhasil Direkam ke Google Sheets!`;
+        soundWin();
+      } catch (err) {
+        console.error(err);
+        btn.disabled = false;
+        btn.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-2"></i> Data Tersimpan Offline`;
+      }
+    }
+  </script>
+</body>
+</html>
