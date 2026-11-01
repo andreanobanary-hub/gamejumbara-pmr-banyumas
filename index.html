@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stan PMR Jumbara XXXII - SMPN 2 Pekuncen</title>
+  <title>Laskar Nagasasi PMR Madya M42 - SMPN 2 Pekuncen</title>
   <!-- Tailwind CSS & FontAwesome -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -40,16 +40,18 @@
         <span class="bg-amber-400 text-red-950 text-xs font-black uppercase px-3.5 py-1 rounded-full shadow-sm tracking-wider">
           JUMBARA PMR XXXII BANYUMAS
         </span>
-        <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight mt-1 text-white drop-shadow">
-          STAN PMR MADYA
+        <h1 class="text-lg sm:text-2xl font-extrabold tracking-tight mt-1 text-white drop-shadow">
+          LASKAR NAGASASI PMR MADYA
         </h1>
-        <p class="text-xs sm:text-sm text-red-100 font-medium">SMP NEGERI 2 PEKUNCEN</p>
+        <p class="text-xs sm:text-sm text-amber-200 font-bold tracking-wide">
+          NOMOR M42 <span class="text-white font-medium">• SMP NEGERI 2 PEKUNCEN</span>
+        </p>
       </div>
 
       <!-- Logo SMP Negeri 2 Pekuncen -->
       <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-white/20">
         <div class="text-right">
-          <p class="text-xs uppercase tracking-wider text-amber-200 font-semibold">PMR Madya</p>
+          <p class="text-xs uppercase tracking-wider text-amber-200 font-semibold">Regu M42</p>
           <p class="text-sm font-bold leading-tight">SMPN 2 Pekuncen</p>
           <span class="text-[10px] text-red-100">Nggayuh Ambukaning Dwara Kartika</span>
         </div>
@@ -87,8 +89,8 @@
         <span class="inline-block p-3.5 bg-red-50 text-red-600 rounded-2xl mb-2 text-2xl">
           <i class="fa-solid fa-handshake-angle"></i>
         </span>
-        <h2 class="text-2xl font-bold text-slate-800">Buku Tamu & Arena Game PMR</h2>
-        <p class="text-sm text-slate-500 mt-1">Lengkapi data kunjungan Anda untuk mulai bermain, kumpulkan skor, dan bawa pulang souvenir!</p>
+        <h2 class="text-2xl font-bold text-slate-800">Buku Tamu & Arena Game Laskar Nagasasi</h2>
+        <p class="text-sm text-slate-500 mt-1">Lengkapi data kunjungan Anda ke tenda Nomor M42 untuk mulai bermain dan mengumpulkan skor hadiah!</p>
       </div>
 
       <form id="formTamu" onsubmit="handleStart(event)" class="space-y-4 max-w-md mx-auto">
@@ -133,7 +135,7 @@
     <section id="section-menu" class="hidden space-y-6">
       <div class="bg-gradient-to-r from-red-700 to-rose-800 text-white p-5 rounded-3xl shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
-          <p class="text-xs uppercase tracking-wider text-amber-300 font-semibold">Selamat Datang di Tenda Kami</p>
+          <p class="text-xs uppercase tracking-wider text-amber-300 font-semibold">Selamat Datang di Tenda Laskar Nagasasi (M42)</p>
           <h3 id="displayGuestName" class="text-xl font-bold">Sahabat Relawan</h3>
           <p id="displayGuestMeta" class="text-xs text-red-200">Kontingen</p>
         </div>
@@ -258,7 +260,7 @@
       </div>
 
       <div class="text-left mb-4">
-        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Pesan / Kesan untuk Stan PMR Spenda:</label>
+        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Pesan / Kesan untuk Laskar Nagasasi PMR Madya:</label>
         <textarea id="inputPesan" rows="2" placeholder="Tuliskan pesan, kesan, atau salam persaudaraan..." class="w-full p-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-red-500 focus:outline-none text-xs font-medium"></textarea>
       </div>
 
@@ -286,7 +288,7 @@
         <div class="flex items-center justify-between border-b pb-3">
           <div class="flex items-center gap-2 text-red-600">
             <i class="fa-solid fa-clipboard-list text-xl"></i>
-            <h3 class="font-bold text-lg text-slate-800">Preview Riwayat Pengunjung Stan</h3>
+            <h3 class="font-bold text-lg text-slate-800">Preview Tamu Tenda Laskar Nagasasi (M42)</h3>
           </div>
           <button onclick="closeHistoryModal()" class="text-slate-400 hover:text-slate-600 text-lg">
             <i class="fa-solid fa-xmark"></i>
@@ -310,11 +312,18 @@
           <p id="emptyHistoryNotice" class="text-center text-xs text-slate-400 py-8 hidden">Belum ada pengunjung yang tercatat pada sesi ini.</p>
         </div>
 
+        <!-- FOOTER MODAL DENGAN FITUR HAPUS SEMUA DATABASE -->
         <div class="pt-3 border-t flex flex-wrap justify-between items-center gap-2 text-xs text-slate-500">
-          <button onclick="clearHistoryStorage()" class="px-3 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 rounded-lg font-semibold transition flex items-center gap-1.5">
-            <i class="fa-solid fa-trash-can"></i>
-            <span>Reset Riwayat Preview</span>
-          </button>
+          <div class="flex items-center gap-2">
+            <button onclick="clearHistoryStorage()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg font-semibold transition flex items-center gap-1.5">
+              <i class="fa-solid fa-trash-can"></i>
+              <span>Hapus Preview Saja</span>
+            </button>
+            <button onclick="hapusSemuaGoogleSheets()" id="btnHapusSheet" class="px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-lg font-bold transition flex items-center gap-1.5 shadow-sm">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              <span>Hapus Database Google Sheet</span>
+            </button>
+          </div>
           
           <button onclick="closeHistoryModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl transition">
             Tutup
@@ -327,7 +336,7 @@
 
   <!-- ==================== FOOTER ==================== -->
   <footer class="bg-slate-900 text-slate-400 py-4 text-center text-xs border-t border-slate-800">
-    <p class="font-medium text-slate-300">Stan PMR Madya SMP Negeri 2 Pekuncen — Jumbara PMR XXXII Kabupaten Banyumas</p>
+    <p class="font-medium text-slate-300">Laskar Nagasasi PMR Madya (M42) SMP Negeri 2 Pekuncen — Jumbara PMR XXXII Banyumas</p>
     <p class="text-[11px] text-slate-500 mt-0.5">Siamo Tutti Fratelli — Kita Semua Bersaudara</p>
   </footer>
 
@@ -448,9 +457,7 @@
       }
     ];
 
-    // ==========================================
-    // SEKTOR RODA SPIN WHEEL (SUDAH DIPERBARUI)
-    // ==========================================
+    // Sektor Roda Spin Wheel
     const wheelSegments = [
       { text: "Stiker PMR Spenda", color: "#ef4444", reward: "Stiker Eksklusif PMR" },
       { text: "Tantangan Yel-Yel!", color: "#f59e0b", reward: "Tantangan Seru (Yel-Yel)" },
@@ -535,7 +542,6 @@
       showSection('section-menu');
     }
 
-    // RESET SESI TAMU SAAT INI
     function resetSesiTamu() {
       if (confirm("Reset sesi tamu saat ini dan kembali ke pendaftaran buku tamu?")) {
         document.getElementById('formTamu').reset();
@@ -767,7 +773,6 @@
       btn.disabled = true;
       btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-2"></i> Merekam ke Database...`;
 
-      // Simpan riwayat ke peramban agar tombol preview langsung terisi
       const localHistory = JSON.parse(localStorage.getItem('pmr_spenda_history') || '[]');
       const timestampNow = new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
       localHistory.unshift({ ...currentGuest, timeFormatted: timestampNow });
@@ -830,11 +835,49 @@
       document.getElementById('modalHistory').classList.add('hidden');
     }
 
+    // Hapus Preview Saja (Lokal Peramban)
     function clearHistoryStorage() {
       if (confirm("Hapus seluruh catatan riwayat preview di perangkat ini? (Data di Google Sheets tetap aman)")) {
         localStorage.removeItem('pmr_spenda_history');
         updateBadgeCount();
         openHistoryModal();
+      }
+    }
+
+    // Hapus Semua Data Pengunjung di Google Sheets
+    async function hapusSemuaGoogleSheets() {
+      const pin = prompt("PERINGATAN: Tindakan ini akan mengosongkan seluruh baris data tamu di Google Sheets!\n\nMasukkan PIN Pembina/Admin untuk melanjutkan (Default: 1991):");
+      if (pin === null) return;
+      if (pin !== "1991") {
+        alert("PIN salah! Tindakan penghapusan dibatalkan demi keamanan.");
+        return;
+      }
+
+      const btn = document.getElementById('btnHapusSheet');
+      const originalText = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-1.5"></i> Mengosongkan Sheet...`;
+
+      try {
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: "clear_all" })
+        });
+
+        // Kosongkan juga cache lokal
+        localStorage.removeItem('pmr_spenda_history');
+        updateBadgeCount();
+        openHistoryModal();
+
+        alert("Berhasil! Seluruh data pengunjung di Google Sheets telah dikosongkan.");
+      } catch (err) {
+        console.error(err);
+        alert("Gagal menghubungi Google Sheets. Periksa koneksi internet Anda.");
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = originalText;
       }
     }
 
