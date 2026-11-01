@@ -26,8 +26,8 @@
     <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
       
       <!-- Logo Kabupaten Banyumas -->
-      <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-2xl border border-white/20">
-        <img src="kabupaten banyumas.png" alt="Logo Kab Banyumas" class="w-14 h-14 object-contain filter drop-shadow" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Lambang_Kabupaten_Banyumas.png/240px-Lambang_Kabupaten_Banyumas.png'">
+      <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-white/20">
+        <img src="https://lh3.googleusercontent.com/d/1I25LYs-NVRvKYPaIQ30RU9vkdMrmTg0S" alt="Logo Kabupaten Banyumas" class="w-14 h-14 object-contain filter drop-shadow">
         <div class="text-left">
           <p class="text-xs uppercase tracking-wider text-amber-200 font-semibold">Kabupaten</p>
           <p class="text-sm font-bold leading-tight">Banyumas</p>
@@ -37,7 +37,7 @@
 
       <!-- Identitas Stan Kegiatan -->
       <div class="text-center">
-        <span class="bg-amber-400 text-red-950 text-xs font-black uppercase px-3 py-1 rounded-full shadow-sm tracking-wider">
+        <span class="bg-amber-400 text-red-950 text-xs font-black uppercase px-3.5 py-1 rounded-full shadow-sm tracking-wider">
           JUMBARA PMR XXXII BANYUMAS
         </span>
         <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight mt-1 text-white drop-shadow">
@@ -47,29 +47,42 @@
       </div>
 
       <!-- Logo SMP Negeri 2 Pekuncen -->
-      <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-2xl border border-white/20">
+      <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-white/20">
         <div class="text-right">
           <p class="text-xs uppercase tracking-wider text-amber-200 font-semibold">PMR Madya</p>
           <p class="text-sm font-bold leading-tight">SMPN 2 Pekuncen</p>
           <span class="text-[10px] text-red-100">Nggayuh Ambukaning Dwara Kartika</span>
         </div>
-        <img src="Ng gayuh Ambukaning Dwara Kartika (6) (1).png" alt="Logo SMPN 2 Pekuncen" class="w-14 h-14 object-contain filter drop-shadow" onerror="this.src='https://img.icons8.com/color/96/school.png'">
+        <img src="https://lh3.googleusercontent.com/d/1oxZCi0JdecC-9-SgV0kdUAURm0kU-Cxk" alt="Logo SMPN 2 Pekuncen" class="w-14 h-14 object-contain filter drop-shadow">
       </div>
 
     </div>
   </header>
 
   <!-- ==================== AREA UTAMA ==================== -->
-  <main class="max-w-4xl mx-auto px-4 py-8 flex-1 w-full">
+  <main class="max-w-4xl mx-auto px-4 py-6 flex-1 w-full">
 
-    <!-- 1. BUKU TAMU DIGITAL -->
+    <!-- BAR NAVIGASI ATAS & TOMBOL PREVIEW RIWAYAT -->
+    <div class="flex justify-between items-center mb-5">
+      <button onclick="goToHome()" class="px-4 py-2 bg-white text-red-700 hover:bg-red-50 border border-red-200 rounded-xl text-xs font-bold shadow-sm transition flex items-center gap-2">
+        <i class="fa-solid fa-house"></i>
+        <span>Menu Awal (Buku Tamu)</span>
+      </button>
+
+      <button onclick="openHistoryModal()" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-bold shadow-sm transition flex items-center gap-2">
+        <i class="fa-solid fa-clipboard-check"></i>
+        <span>Preview Hasil & Tamu (<span id="historyBadgeCount">0</span>)</span>
+      </button>
+    </div>
+
+    <!-- 1. BUKU TAMU DIGITAL (MENU PENDAFTARAN) -->
     <section id="section-register" class="bg-white rounded-3xl shadow-xl p-6 sm:p-8 border border-slate-200">
       <div class="text-center mb-6">
-        <span class="inline-block p-3 bg-red-50 text-red-600 rounded-2xl mb-2 text-2xl">
+        <span class="inline-block p-3.5 bg-red-50 text-red-600 rounded-2xl mb-2 text-2xl">
           <i class="fa-solid fa-handshake-angle"></i>
         </span>
         <h2 class="text-2xl font-bold text-slate-800">Buku Tamu & Arena Game PMR</h2>
-        <p class="text-sm text-slate-500 mt-1">Silakan lengkapi data kunjungan Anda untuk mulai bermain dan mengumpulkan skor hadiah!</p>
+        <p class="text-sm text-slate-500 mt-1">Lengkapi data kunjungan Anda untuk bermain game, kumpulkan skor, dan bawa pulang hadiah!</p>
       </div>
 
       <form id="formTamu" onsubmit="handleStart(event)" class="space-y-4 max-w-md mx-auto">
@@ -82,10 +95,10 @@
         </div>
 
         <div>
-          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Asal Pangkalan / Unit / Sekolah</label>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Asal Pangkalan / Unit / Kontingen</label>
           <div class="relative">
             <i class="fa-solid fa-school absolute left-3.5 top-3.5 text-slate-400"></i>
-            <input type="text" id="inputAsal" required placeholder="Contoh: Kontingen SMP N 1 Wangon" class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-red-500 focus:outline-none font-medium text-sm">
+            <input type="text" id="inputAsal" required placeholder="Contoh: SMP N 1 Wangon" class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-red-500 focus:outline-none font-medium text-sm">
           </div>
         </div>
 
@@ -118,9 +131,11 @@
           <h3 id="displayGuestName" class="text-xl font-bold">Sahabat Relawan</h3>
           <p id="displayGuestMeta" class="text-xs text-red-200">Kontingen</p>
         </div>
-        <button onclick="logoutGuest()" class="text-xs bg-white/20 hover:bg-white/30 px-3 py-1.5 rounded-xl border border-white/30 transition flex items-center gap-1.5">
-          <i class="fa-solid fa-arrow-right-from-bracket"></i> Ganti Tamu
-        </button>
+        <div class="flex gap-2">
+          <button onclick="goToHome()" class="text-xs bg-white/20 hover:bg-white/30 px-3.5 py-2 rounded-xl border border-white/30 transition flex items-center gap-1.5">
+            <i class="fa-solid fa-user-plus"></i> Ganti Tamu
+          </button>
+        </div>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -140,7 +155,7 @@
             <i class="fa-solid fa-dharmachakra"></i>
           </div>
           <h4 class="font-bold text-lg text-slate-800">Roda Keberuntungan</h4>
-          <p class="text-xs text-slate-500 mt-2 flex-1">Putar roda untuk mendapatkan stiker, merchandise, permen energi, atau tantangan yel-yel seru!</p>
+          <p class="text-xs text-slate-500 mt-2 flex-1">Putar roda berhadiah stiker, merchandise, permen energi, atau tantangan seru!</p>
           <span class="mt-4 px-4 py-1.5 bg-amber-50 text-amber-700 font-bold text-xs rounded-full group-hover:bg-amber-500 group-hover:text-white transition">Putar Roda</span>
         </div>
 
@@ -150,7 +165,7 @@
             <i class="fa-solid fa-kit-medical"></i>
           </div>
           <h4 class="font-bold text-lg text-slate-800">Tebak Alat P3K</h4>
-          <p class="text-xs text-slate-500 mt-2 flex-1">Cocokkan skenario cedera dengan alat pertolongan pertama yang paling tepat.</p>
+          <p class="text-xs text-slate-500 mt-2 flex-1">Cocokkan skenario kondisi cedera dengan alat pertolongan pertama yang tepat.</p>
           <span class="mt-4 px-4 py-1.5 bg-emerald-50 text-emerald-700 font-bold text-xs rounded-full group-hover:bg-emerald-600 group-hover:text-white transition">Tebak Alat</span>
         </div>
       </div>
@@ -159,8 +174,8 @@
     <!-- 3A. GAME KUIS -->
     <section id="game-kuis" class="hidden bg-white rounded-3xl shadow-xl p-6 sm:p-8 border border-slate-200">
       <div class="flex items-center justify-between mb-4 border-b pb-3">
-        <button onclick="backToMenu()" class="text-xs font-bold text-slate-500 hover:text-slate-800 flex items-center gap-1">
-          <i class="fa-solid fa-chevron-left"></i> Menu Utama
+        <button onclick="backToMenu()" class="text-xs font-bold text-slate-500 hover:text-slate-800 flex items-center gap-1.5">
+          <i class="fa-solid fa-chevron-left"></i> Pilihan Game
         </button>
         <span id="quizCounter" class="text-xs font-extrabold px-3 py-1 bg-red-100 text-red-700 rounded-full">Soal 1 / 7</span>
       </div>
@@ -169,16 +184,14 @@
         <h3 id="quizQuestion" class="text-lg sm:text-xl font-bold text-slate-800 leading-snug">Pertanyaan Kuis</h3>
       </div>
 
-      <div id="quizOptions" class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6">
-        <!-- Opsi jawaban kuis -->
-      </div>
+      <div id="quizOptions" class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6"></div>
     </section>
 
     <!-- 3B. GAME RODA SPIN -->
     <section id="game-spin" class="hidden bg-white rounded-3xl shadow-xl p-6 sm:p-8 border border-slate-200 text-center">
       <div class="flex items-center justify-between mb-4 border-b pb-3">
-        <button onclick="backToMenu()" class="text-xs font-bold text-slate-500 hover:text-slate-800 flex items-center gap-1">
-          <i class="fa-solid fa-chevron-left"></i> Menu Utama
+        <button onclick="backToMenu()" class="text-xs font-bold text-slate-500 hover:text-slate-800 flex items-center gap-1.5">
+          <i class="fa-solid fa-chevron-left"></i> Pilihan Game
         </button>
         <span class="text-xs font-extrabold px-3 py-1 bg-amber-100 text-amber-700 rounded-full">Spin & Win</span>
       </div>
@@ -208,8 +221,8 @@
     <!-- 3C. GAME TEBAK P3K -->
     <section id="game-p3k" class="hidden bg-white rounded-3xl shadow-xl p-6 sm:p-8 border border-slate-200">
       <div class="flex items-center justify-between mb-4 border-b pb-3">
-        <button onclick="backToMenu()" class="text-xs font-bold text-slate-500 hover:text-slate-800 flex items-center gap-1">
-          <i class="fa-solid fa-chevron-left"></i> Menu Utama
+        <button onclick="backToMenu()" class="text-xs font-bold text-slate-500 hover:text-slate-800 flex items-center gap-1.5">
+          <i class="fa-solid fa-chevron-left"></i> Pilihan Game
         </button>
         <span id="p3kCounter" class="text-xs font-extrabold px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full">Kasus 1 / 5</span>
       </div>
@@ -221,9 +234,7 @@
 
       <p class="text-center text-xs text-slate-500 mb-4 font-medium">Pilih alat P3K yang paling tepat digunakan:</p>
 
-      <div id="p3kOptions" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <!-- Opsi alat P3K -->
-      </div>
+      <div id="p3kOptions" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
     </section>
 
     <!-- 4. HASIL AKHIR & PESAN KESAN -->
@@ -245,15 +256,62 @@
         <textarea id="inputPesan" rows="2" placeholder="Tuliskan pesan, kesan, atau salam persaudaraan..." class="w-full p-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-red-500 focus:outline-none text-xs font-medium"></textarea>
       </div>
 
-      <button id="btnKirimData" onclick="submitToGoogleSheets()" class="w-full py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl shadow-lg shadow-red-500/30 transition flex items-center justify-center gap-2">
+      <button id="btnKirimData" onclick="submitToGoogleSheets()" class="w-full py-3.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl shadow-lg shadow-red-500/30 transition flex items-center justify-center gap-2">
         <i class="fa-solid fa-cloud-arrow-up"></i>
         <span>Kirim & Rekam ke Google Sheets</span>
       </button>
 
-      <button onclick="backToMenu()" class="w-full mt-2 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition">
-        Mainkan Game Lainnya
-      </button>
+      <!-- TOMBOL KEMBALI & GANTI TAMU -->
+      <div class="grid grid-cols-2 gap-2 mt-3">
+        <button onclick="backToMenu()" class="py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition flex items-center justify-center gap-1.5">
+          <i class="fa-solid fa-gamepad"></i>
+          <span>Main Game Lain</span>
+        </button>
+        <button onclick="goToHome()" class="py-2.5 bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-bold rounded-xl transition flex items-center justify-center gap-1.5 border border-rose-200">
+          <i class="fa-solid fa-arrow-rotate-left"></i>
+          <span>Selesai & Tamu Baru</span>
+        </button>
+      </div>
     </section>
+
+    <!-- MODAL POPUP: PREVIEW DAFTAR PENGUNJUNG YANG SUDAH MAIN -->
+    <div id="modalHistory" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+      <div class="bg-white rounded-3xl max-w-2xl w-full p-6 shadow-2xl max-h-[85vh] flex flex-col">
+        <div class="flex items-center justify-between border-b pb-3">
+          <div class="flex items-center gap-2 text-red-600">
+            <i class="fa-solid fa-clipboard-list text-xl"></i>
+            <h3 class="font-bold text-lg text-slate-800">Preview Riwayat Pengunjung Stan</h3>
+          </div>
+          <button onclick="closeHistoryModal()" class="text-slate-400 hover:text-slate-600 text-lg">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="overflow-y-auto flex-1 my-4">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="bg-red-50 text-red-800 border-b border-red-200">
+                <th class="p-2.5 rounded-l-lg">Waktu</th>
+                <th class="p-2.5">Nama Tamu</th>
+                <th class="p-2.5">Asal Kontingen</th>
+                <th class="p-2.5">Tingkat</th>
+                <th class="p-2.5">Game</th>
+                <th class="p-2.5 rounded-r-lg">Skor / Hadiah</th>
+              </tr>
+            </thead>
+            <tbody id="historyTableBody" class="divide-y divide-slate-100"></tbody>
+          </table>
+          <p id="emptyHistoryNotice" class="text-center text-xs text-slate-400 py-8 hidden">Belum ada pengunjung yang tercatat pada sesi ini.</p>
+        </div>
+
+        <div class="pt-3 border-t flex justify-between items-center text-xs text-slate-500">
+          <span>*Data otomatis terhubung & tersimpan ke Google Sheets</span>
+          <button onclick="closeHistoryModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl transition">
+            Tutup
+          </button>
+        </div>
+      </div>
+    </div>
 
   </main>
 
@@ -263,12 +321,12 @@
     <p class="text-[11px] text-slate-500 mt-0.5">Siamo Tutti Fratelli — Kita Semua Bersaudara</p>
   </footer>
 
-  <!-- ==================== JAVASCRIPT & GOOGLE APPS SCRIPT INTEGRATION ==================== -->
+  <!-- ==================== JAVASCRIPT LOGIC ==================== -->
   <script>
-    // URL WEB APP GOOGLE APPS SCRIPT MILIK ANDA
+    // URL WEB APP APPS SCRIPT ANDA
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwPy0PJNPPp4zPcl1Lqxm9VisPglD0rPo5jba4QJePuW_XLMNpGDJeDbP_ZpDZ4ZKfXpQ/exec";
 
-    // Audio Synthesizer (Web Audio API)
+    // Audio Synthesizer
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     function playTone(freq, type = 'sine', duration = 0.15) {
       if (audioCtx.state === 'suspended') audioCtx.resume();
@@ -312,7 +370,7 @@
       pesan: ''
     };
 
-    // Bank Soal Kuis PMR
+    // Bank Soal Kuis
     const kuisData = [
       {
         q: "Siapakah bapak pencetus berdirinya Palang Merah Internasional?",
@@ -351,7 +409,7 @@
       }
     ];
 
-    // Bank Kasus Tebak Alat P3K
+    // Bank Kasus P3K
     const p3kData = [
       {
         case: "Korban mengalami patah tulang pada lengan bawah dan membutuhkan penyangga agar tidak bergeser.",
@@ -380,7 +438,7 @@
       }
     ];
 
-    // Sektor Roda Putar Spin Wheel
+    // Spin Wheel Segments
     const wheelSegments = [
       { text: "Stiker PMR Spenda", color: "#ef4444", reward: "Stiker Eksklusif PMR" },
       { text: "Tantangan Yel-Yel!", color: "#f59e0b", reward: "Tantangan Seru (Yel-Yel)" },
@@ -450,12 +508,13 @@
         document.getElementById(s).classList.add('hidden');
       });
       document.getElementById(id).classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function handleStart(e) {
       e.preventDefault();
-      currentGuest.nama = document.getElementById('inputNama').value;
-      currentGuest.asal = document.getElementById('inputAsal').value;
+      currentGuest.nama = document.getElementById('inputNama').value.trim();
+      currentGuest.asal = document.getElementById('inputAsal').value.trim();
       currentGuest.tingkat = document.getElementById('selectTingkat').value;
 
       document.getElementById('displayGuestName').innerText = currentGuest.nama;
@@ -464,8 +523,9 @@
       showSection('section-menu');
     }
 
-    function logoutGuest() {
+    function goToHome() {
       document.getElementById('formTamu').reset();
+      currentGuest = { nama: '', asal: '', tingkat: 'Madya', game: '', skor: '', pesan: '' };
       showSection('section-register');
     }
 
@@ -474,17 +534,14 @@
     }
 
     function openGame(type) {
-      if (type === 'kuis') {
-        startQuiz();
-      } else if (type === 'spin') {
+      if (type === 'kuis') startQuiz();
+      else if (type === 'spin') {
         showSection('game-spin');
         document.getElementById('spinResultBox').classList.add('hidden');
-      } else if (type === 'p3k') {
-        startP3K();
-      }
+      } else if (type === 'p3k') startP3K();
     }
 
-    // --- KUIS LOGIC ---
+    // --- KUIS ---
     let quizIdx = 0;
     let quizScore = 0;
 
@@ -530,11 +587,8 @@
 
       setTimeout(() => {
         quizIdx++;
-        if (quizIdx < kuisData.length) {
-          renderQuizQuestion();
-        } else {
-          finishGameQuiz();
-        }
+        if (quizIdx < kuisData.length) renderQuizQuestion();
+        else finishGameQuiz();
       }, 1200);
     }
 
@@ -549,11 +603,12 @@
         ? "Mendapatkan: Stiker Eksklusif & Snack Relawan!" 
         : "Mendapatkan: Permen Energi Relawan & Semangat Belajar!";
 
+      resetSubmitButton();
       soundWin();
       showSection('section-result');
     }
 
-    // --- SPIN WHEEL LOGIC ---
+    // --- SPIN WHEEL ---
     let selectedWheelItem = "";
 
     function spinWheel() {
@@ -606,10 +661,11 @@
       document.getElementById('resultScore').innerText = selectedWheelItem;
       document.getElementById('resultReward').innerText = "Tunjukkan layar ini kepada petugas stan untuk klaim hadiah/tantangan!";
 
+      resetSubmitButton();
       showSection('section-result');
     }
 
-    // --- TEBAK P3K LOGIC ---
+    // --- P3K ---
     let p3kIdx = 0;
     let p3kScore = 0;
 
@@ -655,11 +711,8 @@
 
       setTimeout(() => {
         p3kIdx++;
-        if (p3kIdx < p3kData.length) {
-          renderP3KQuestion();
-        } else {
-          finishP3K();
-        }
+        if (p3kIdx < p3kData.length) renderP3KQuestion();
+        else finishP3K();
       }, 1200);
     }
 
@@ -674,11 +727,20 @@
         ? "Mendapatkan: Stiker Eksklusif & Snack Relawan!" 
         : "Mendapatkan: Permen Energi Relawan & Semangat Belajar P3K!";
 
+      resetSubmitButton();
       soundWin();
       showSection('section-result');
     }
 
-    // --- PENGIRIMAN DATA KE GOOGLE SHEETS ---
+    function resetSubmitButton() {
+      const btn = document.getElementById('btnKirimData');
+      btn.disabled = false;
+      btn.className = "w-full py-3.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl shadow-lg shadow-red-500/30 transition flex items-center justify-center gap-2";
+      btn.innerHTML = `<i class="fa-solid fa-cloud-arrow-up"></i> <span>Kirim & Rekam ke Google Sheets</span>`;
+      document.getElementById('inputPesan').value = "";
+    }
+
+    // --- PENGIRIMAN DATA KE GOOGLE SHEETS & LIVE PREVIEW ---
     async function submitToGoogleSheets() {
       const btn = document.getElementById('btnKirimData');
       currentGuest.pesan = document.getElementById('inputPesan').value.trim() || "Terima kasih atas kunjungannya!";
@@ -686,10 +748,12 @@
       btn.disabled = true;
       btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-2"></i> Merekam ke Database...`;
 
-      // Simpan cadangan offline di LocalStorage perangkat
+      // Simpan riwayat ke peramban agar tombol preview langsung terisi
       const localHistory = JSON.parse(localStorage.getItem('pmr_spenda_history') || '[]');
-      localHistory.push({ ...currentGuest, timestamp: new Date().toISOString() });
+      const timestampNow = new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+      localHistory.unshift({ ...currentGuest, timeFormatted: timestampNow });
       localStorage.setItem('pmr_spenda_history', JSON.stringify(localHistory));
+      updateBadgeCount();
 
       try {
         await fetch(SCRIPT_URL, {
@@ -699,15 +763,55 @@
           body: JSON.stringify(currentGuest)
         });
 
-        btn.className = "w-full py-3 bg-emerald-600 text-white font-bold rounded-xl shadow transition";
+        btn.className = "w-full py-3.5 bg-emerald-600 text-white font-bold rounded-xl shadow transition";
         btn.innerHTML = `<i class="fa-solid fa-circle-check mr-2"></i> Berhasil Direkam ke Google Sheets!`;
         soundWin();
       } catch (err) {
         console.error(err);
         btn.disabled = false;
-        btn.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-2"></i> Data Tersimpan Offline`;
+        btn.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-2"></i> Tersimpan Lokal (Offline)`;
       }
     }
+
+    // --- PREVIEW RIWAYAT MODAL ---
+    function updateBadgeCount() {
+      const history = JSON.parse(localStorage.getItem('pmr_spenda_history') || '[]');
+      document.getElementById('historyBadgeCount').innerText = history.length;
+    }
+
+    function openHistoryModal() {
+      const modal = document.getElementById('modalHistory');
+      const tbody = document.getElementById('historyTableBody');
+      const emptyNotice = document.getElementById('emptyHistoryNotice');
+      const history = JSON.parse(localStorage.getItem('pmr_spenda_history') || '[]');
+
+      tbody.innerHTML = '';
+      if (history.length === 0) {
+        emptyNotice.classList.remove('hidden');
+      } else {
+        emptyNotice.classList.add('hidden');
+        history.forEach(item => {
+          const tr = document.createElement('tr');
+          tr.className = "border-b border-slate-100 hover:bg-slate-50";
+          tr.innerHTML = `
+            <td class="p-2.5 text-slate-400 font-mono">${item.timeFormatted || '-'}</td>
+            <td class="p-2.5 font-bold text-slate-800">${item.nama}</td>
+            <td class="p-2.5 text-slate-600">${item.asal}</td>
+            <td class="p-2.5"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-red-100 text-red-700">${item.tingkat}</span></td>
+            <td class="p-2.5 text-slate-600">${item.game}</td>
+            <td class="p-2.5 font-bold text-emerald-600">${item.skor}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+      modal.classList.remove('hidden');
+    }
+
+    function closeHistoryModal() {
+      document.getElementById('modalHistory').classList.add('hidden');
+    }
+
+    window.addEventListener('DOMContentLoaded', updateBadgeCount);
   </script>
 </body>
 </html>
